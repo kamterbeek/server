@@ -477,11 +477,7 @@ public static class ServiceCollectionExtensions
         {
             identityServerBuilder.AddSigningCredential(certificate);
         }
-        else if (env.IsDevelopment())
-        {
-            identityServerBuilder.AddDeveloperSigningCredential(false);
-        }
-        else
+        else if (!env.IsDevelopment())
         {
             throw new Exception("No identity certificate to use.");
         }
